@@ -293,7 +293,7 @@ SELECT * FROM dbo.empregados
 WHERE salario > 1000
 AND id_status in (1, 3)
 AND sexo = 'M'
-order by id_status, nome_emp ASC
+order by id_status,  nome_emp ASC
 
 
 
