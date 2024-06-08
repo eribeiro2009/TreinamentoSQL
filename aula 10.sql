@@ -414,7 +414,7 @@ SET salario = salario * 1.2
 WHERE id_cargo in(24, 25, 26)
 ;
 
-SELECT e.id_emp as cod_emp
+SELECT   e.id_emp as cod_emp
 		,e.id_departamento as cod_dep 
 		,e.nome_emp
 		,e.id_status
@@ -425,3 +425,48 @@ SELECT e.id_emp as cod_emp
 FROM dbo.empregados as e
 WHERE YEAR(e.dt_nascimento) >= 2010
 ORDER BY YEAR(e.dt_nascimento), e.nome_emp
+
+
+
+
+SELECT   e.id_emp as cod_emp
+		,e.id_departamento as cod_dep
+		,e.nome_emp 
+		,e.salario
+		,YEAR(e.dt_admissao) as ano_contrato
+		,d.nome_dep
+FROM dbo.empregados as e
+INNER JOIN dbo.departamentos as d 
+ON d.id_dep = e.id_departamento
+WHERE YEAR(e.dt_admissao) >= 2010
+AND e.salario >= 1000
+AND e.id_departamento in(1010, 1020, 1030)
+ORDER BY d.nome_dep
+;
+
+
+SELECT   d.id_dep as cod_dep,
+		,d.nome_dep as nome_departamento
+        ,count() as qtd_empregados
+FROM dbo.departamentos as d
+INNER JOIN dbo.empregados as e
+ON e.id_dep = d.id_dep
+WHERE salario > 1000
+GROUP BY d.id_dep, d.nome_dep
+HAVING count() > 10
+;
+
+
+
+SELECT   e.id_emp as cod_emp
+		,e.id_status as cod_status
+		,s.desc_status
+		,d.nome_dep
+FROM dbo.empregados as e
+INNER JOIN dbo.status as s
+ON s.id_status = e.id_status
+INNER JOIN dbo.departamentos as d
+ON d.id_dep = e.id_departamento
+WHERE s.desc_status in('Ativo', 'Desligado')
+ORDER BY e.id_emp
+;
