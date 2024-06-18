@@ -1,6 +1,7 @@
 USE inicial
 GO
 
+-- Inserindo novo status
 INSERT INTO dbo.status VALUES
 (
 	1,
@@ -28,7 +29,7 @@ INSERT INTO dbo.departamentos VALUES
 INSERT INTO dbo.departamentos VALUES
 (
 	1020,
-	'Serviços Gerais'
+	'Serviï¿½os Gerais'
 );
 
 INSERT INTO dbo.departamentos VALUES
@@ -79,7 +80,7 @@ SELECT * FROM dbo.empregados;
 INSERT INTO dbo.empregados VALUES
 (
 	10,
-	'João',
+	'Joï¿½o',
 	'da Silva Nogueira',
 	CONVERT(date, '2019-08-10', 102),
 	1,
@@ -309,7 +310,7 @@ FROM dbo.empregados
 GROUP by id_status
 order by avg(salario)
 
---trabalhando com joins 9 (junções)
+--trabalhando com joins 9 (junï¿½ï¿½es)
 SELECT  e.id_emp as cod_emp
 	   , e.id_departamento as cod_dep
 	   , e.nome_emp as nome_emp
@@ -320,7 +321,7 @@ FROM dbo.empregados as e
 INNER JOIN dbo.departamentos as d
 ON e.id_departamento = d.id_dep
 INNER JOIN dbo.status as s
-ON e.id_status = s.id_status
+ON e.id_statusï¿½=ï¿½s.id_status
 ;
 
 SELECT * FROM dbo.status
@@ -332,7 +333,7 @@ SELECT * FROM dbo.cargos
 SELECT * FROM dbo.empregados
 
 
-SELECT id_cargo, SUM(salario) as total_por_função, count(*) as quantos_emp_por_função, avg(salario) as media_por_função
+SELECT id_cargo, SUM(salario) as total_por_funï¿½ï¿½o, count(*) as quantos_emp_por_funï¿½ï¿½o, avg(salario) as media_por_funï¿½ï¿½o
 FROM dbo.empregados
 GROUP BY id_cargo
 
